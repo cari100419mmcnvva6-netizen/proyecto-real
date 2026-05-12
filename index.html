@@ -25,10 +25,59 @@
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;700&display=swap"
     rel="stylesheet">
 
+    <style>
+
+        /* SOLO estilos del botón */
+
+        .btn-container{
+            display:flex;
+            justify-content:center;
+            margin-top:25px;
+        }
+
+        .heart-btn{
+            padding:15px 30px;
+            font-size:20px;
+            border:none;
+            border-radius:50px;
+            background:#7ec8ff;
+            color:white;
+            cursor:pointer;
+            box-shadow:0 6px 15px rgba(0,0,0,0.15);
+            transition:0.3s;
+            font-family:'Quicksand', sans-serif;
+        }
+
+        .heart-btn:hover{
+            transform:scale(1.05);
+            background:#5bb8ff;
+        }
+
+        .heart{
+            position:fixed;
+            font-size:30px;
+            animation:floatUp 2s linear forwards;
+            pointer-events:none;
+            z-index:9999;
+        }
+
+        @keyframes floatUp{
+            0%{
+                transform:translateY(0) scale(1);
+                opacity:1;
+            }
+
+            100%{
+                transform:translateY(-250px) scale(1.8) rotate(20deg);
+                opacity:0;
+            }
+        }
+
+    </style>
+
 </head>
 
 <body>
-
 
     <!-- FONDO -->
 
@@ -43,83 +92,13 @@
             Studio Ghibli API
         </h1>
 
-         <style>
-        body{
-            margin:0;
-            height:100vh;
-            display:flex;
-            justify-content:center;
-            align-items:center;
-            background:linear-gradient(135deg,#ffb6d9,#ffd6ec);
-            overflow:hidden;
-            font-family:Arial, sans-serif;
-        }
+        <!-- BOTÓN CENTRADO -->
 
-        button{
-            padding:18px 35px;
-            font-size:22px;
-            border:none;
-            border-radius:50px;
-            background:#ff4f81;
-            color:white;
-            cursor:pointer;
-            box-shadow:0 8px 20px rgba(0,0,0,0.2);
-            transition:0.3s;
-        }
-
-        button:hover{
-            transform:scale(1.08);
-            background:#ff2f6d;
-        }
-
-        .heart{
-            position:absolute;
-            font-size:30px;
-            animation:floatUp 2s linear forwards;
-            pointer-events:none;
-        }
-
-        @keyframes floatUp{
-            0%{
-                transform:translateY(0) scale(1);
-                opacity:1;
-            }
-
-            100%{
-                transform:translateY(-250px) scale(1.8) rotate(20deg);
-                opacity:0;
-            }
-        }
-    </style>
-</head>
-<body>
-
-    <button onclick="createHearts()">💖 Presióname 💖</button>
-
-    <script>
-        function createHearts(){
-
-            for(let i = 0; i < 15; i++){
-
-                const heart = document.createElement("div");
-                heart.classList.add("heart");
-
-                const emojis = ["💖","💘","💕","💗","💞","❤️"];
-                heart.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
-
-                heart.style.left = Math.random() * window.innerWidth + "px";
-                heart.style.top = (window.innerHeight - 100) + "px";
-
-                heart.style.fontSize = (20 + Math.random() * 30) + "px";
-
-                document.body.appendChild(heart);
-
-                setTimeout(() => {
-                    heart.remove();
-                }, 2000);
-            }
-        }
-    </script>
+        <div class="btn-container">
+            <button class="heart-btn" onclick="createHearts()">
+                💙 Presióname 💙
+            </button>
+        </div>
 
     </header>
 
@@ -134,13 +113,7 @@
                 Explora el universo de Studio Ghibli
             </h2>
 
-           
-
-            
-
         </div>
-
-       
 
     </section>
 
@@ -170,6 +143,33 @@
 
     </footer>
 
+
+    <script>
+
+        function createHearts(){
+
+            for(let i = 0; i < 15; i++){
+
+                const heart = document.createElement("div");
+                heart.classList.add("heart");
+
+                const emojis = ["💙","🩵","💠","❄️","✨"];
+                heart.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
+
+                heart.style.left = Math.random() * window.innerWidth + "px";
+                heart.style.top = (window.innerHeight - 100) + "px";
+
+                heart.style.fontSize = (20 + Math.random() * 30) + "px";
+
+                document.body.appendChild(heart);
+
+                setTimeout(() => {
+                    heart.remove();
+                }, 2000);
+            }
+        }
+
+    </script>
 
     <script src="app.js"></script>
 
