@@ -43,7 +43,84 @@
             Studio Ghibli API
         </h1>
 
-    
+    <!-- Botón -->
+         <style>
+        body{
+            margin:0;
+            height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            background:linear-gradient(135deg,#ffb6d9,#ffd6ec);
+            overflow:hidden;
+            font-family:Arial, sans-serif;
+        }
+
+        button{
+            padding:18px 35px;
+            font-size:22px;
+            border:none;
+            border-radius:50px;
+            background:#ff4f81;
+            color:white;
+            cursor:pointer;
+            box-shadow:0 8px 20px rgba(0,0,0,0.2);
+            transition:0.3s;
+        }
+
+        button:hover{
+            transform:scale(1.08);
+            background:#ff2f6d;
+        }
+
+        .heart{
+            position:absolute;
+            font-size:30px;
+            animation:floatUp 2s linear forwards;
+            pointer-events:none;
+        }
+
+        @keyframes floatUp{
+            0%{
+                transform:translateY(0) scale(1);
+                opacity:1;
+            }
+
+            100%{
+                transform:translateY(-250px) scale(1.8) rotate(20deg);
+                opacity:0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <button onclick="createHearts()">💖 Presióname 💖</button>
+
+    <script>
+        function createHearts(){
+
+            for(let i = 0; i < 15; i++){
+
+                const heart = document.createElement("div");
+                heart.classList.add("heart");
+
+                const emojis = ["💖","💘","💕","💗","💞","❤️"];
+                heart.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
+
+                heart.style.left = Math.random() * window.innerWidth + "px";
+                heart.style.top = (window.innerHeight - 100) + "px";
+
+                heart.style.fontSize = (20 + Math.random() * 30) + "px";
+
+                document.body.appendChild(heart);
+
+                setTimeout(() => {
+                    heart.remove();
+                }, 2000);
+            }
+        }
+    </script>
 
     </header>
 
